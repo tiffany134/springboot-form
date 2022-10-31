@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    
+    <title>submit</title>
+        
+</head>
+<body>
+ <h1>新增結果</h1>
+    <table>
+        <tr>  
+            <td>姓名</td>
+            <td>性別</td>
+            <td>電話</td>
+            <td>地區</td>
+        </tr>
+        <tr>
+            <td> <p th:text=" ${user.name}"></p></td>
+            <td>	<p th:text="${user.sex}"></p></td>
+            <td>	<p th:text=" ${user.phone}"></p></td>
+            <td><p th:text="${user.area}"></p></td>
+           
+        </tr>
+    </table>
+ 
+   
+
+
+	
+    </form> 
+</body>
+</html>
