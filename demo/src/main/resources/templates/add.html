@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    
+
+
     <title>submit</title>
         
 </head>
 <body>
  <h1>新增結果</h1>
-    <table>
-        <tr>  
+ <form action="#" method="post" th:object="${user}" >
+   
+      
+           <table border=1>
+                    <tr>       
             <td>姓名</td>
             <td>性別</td>
             <td>電話</td>
@@ -22,11 +26,9 @@
            
         </tr>
     </table>
- 
+    
    
-
-
-	
     </form> 
+    
 </body>
 </html>

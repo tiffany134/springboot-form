@@ -12,6 +12,7 @@ public class UserDao {
   @Autowired
   private JdbcTemplate jdbcTemplate;
   public void CreateUser(User user) {
+    
     String sql = "INSERT INTO test(name,sex,phone,area)"+"VALUES(?,?,?,?)";
     jdbcTemplate.update(sql, new Object[] { user.getName(),user.getSex(),user.getPhone(),user.getArea() });
   }

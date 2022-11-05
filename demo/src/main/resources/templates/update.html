@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <script type='text/javascript' src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <title>form</title>
+
+</head>
+
+<body>
+    <h1>人員資料輸入表</h1>
+
+    <form action="#" method="post">
+
+        <input id="omsid" type="text" style="width:50px" />
+
+        <input type="button" class="btu" value="查詢此ID" />
+        <p> </p>
+
+        <table>
+            <tr>
+                <td>姓名:</td>
+                <td><input type="text" id="name" />
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>性別:</td>
+                <td><input type="radio" value="男" name="sex" id="sex_m" />
+                    男
+                    <input type="radio" value="女" name="sex" id="sex_f" />
+                    女
+                </td>
+            </tr>
+
+            <tr>
+                <td>電話:</td>
+                <td><input type="text" max="10" id="phone" />
+                </td>
+            </tr>
+            <tr>
+                <td>地區:</td>
+                <td><select id="area" />
+                    <option>請選擇縣市</option>
+                    <option value="臺北市">臺北市</option>
+                    <option value="新北市">新北市</option>
+                    <option value="基隆市">基隆市</option>
+                    <option value="桃園市">桃園市</option>
+                    <option value="新竹縣">新竹縣</option>
+                    <option value="新竹市">新竹市</option>
+                    <option value="苗栗縣">苗栗縣</option>
+                    <option value="臺中市">臺中市</option>
+                    <option value="臺南市">臺南市</option>
+                    <option value="高雄市">高雄市</option>
+                    <option value="彰化縣">彰化縣</option>
+                    <option value="嘉義市">嘉義市</option>
+                    <option value="南投縣">南投縣</option>
+                    <option value="雲林縣">雲林縣</option>
+                    <option value="嘉義縣">嘉義縣</option>
+                    <option value="屏東縣">屏東縣</option>
+                    <option value="宜蘭縣">宜蘭縣</option>
+                    <option value="花蓮縣">花蓮縣</option>
+                    <option value="臺東縣">臺東縣</option>
+                    <option value="澎湖縣">澎湖縣</option>
+                    <option value="金門縣">金門縣</option>
+                    <option value="連江縣">連江縣</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    <input type="button" class="btu_s" value="確定提交" />
+                </td>
+                <td>
+                    　<input type="reset" value="清除">
+                </td>
+            </tr>
+
+        </table>
+
+    </form>
+
+    <script>
+
+        document.querySelector('.btu').addEventListener('click', function () {
+            // function query()
+
+            var id = document.getElementById("omsid").value
+            console.log('@@@@@' + id)
+            $.ajax(
+                {
+                    tyep: "GET",
+                    url: "/update/" + id,
+
+                    contentType: "application/json",
+                    dataType: "json",
+
+                    success: function (data) {
+                        console.log(data.name);
+                        document.getElementById("name").value = data.name
+                        document.getElementById("phone").value = data.phone
+                        document.getElementById("area").value = data.area;
+                        if (data.sex == "男") {
+                            document.getElementById("sex_m").checked = true;
+                        } else {
+                            document.getElementById("sex_f").checked = true;
+                        }
+                        //element.value = data.area;
+                    }, error: function (e) {//响应不成功时返回的函数
+                        console.log(e, 'error');
+                    }
+                });
+        });
+        document.querySelector('.btu_s').addEventListener('click', function () {
+            // function query()
+
+            var id = document.getElementById("omsid").value
+            var sex_v = "男"
+            if (document.getElementById("sex_m").checked) {
+                sex_v = "男"
+            } else {
+                sex_v = "女"
+            }
+            var user = {
+                "name": document.getElementById("name").value,
+                "sex": sex_v,
+                "phone": document.getElementById("phone").value,
+                "area": document.getElementById("area").value,
+            }
+
+            console.log('@@@@@' + id + user)
+            $.ajax(
+                {
+                    method: "POST",
+                    url: "/update/"+id,
+
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(user),
+                    success: function (data) {
+                        
+
+                        //    document.getElementById("name").value = data.name
+                        //    document.getElementById("phone").value = data.phone
+                        //    document.getElementById("area").value = data.area;
+                        //    if (data.sex == "男") {
+                        //         document.getElementById("sex_m").checked  = true;
+                        //     } else {
+                        //         document.getElementById("sex_f").checked  = true;
+                        //     }
+                        //element.value = data.area;
+                    }, error: function (e) {//响应不成功时返回的函数
+                        console.log(e, 'error');
+                    }
+                });
+        });
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

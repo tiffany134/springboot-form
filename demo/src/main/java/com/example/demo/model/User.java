@@ -8,11 +8,11 @@ import lombok.Data;
 public class User  {
      
 
-   private Integer id;
-   private  String name;
-   private  String sex;
-  private String  phone;
-  private     String area; 
+  private  int id;
+  private  String  name;
+  private  String  sex;
+  private  String  phone;
+  private  String  area; 
 
  
  

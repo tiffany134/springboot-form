@@ -1,37 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-
-    <title>form</title>
+ 
         
 </head>
 <body>
  <h1 >人員資料輸入表</h1>
   
-    <form action="#" method="post" th:action="@{/add}" th:object="${user}" >
+    <form action="#" method="post" th:action="@{/user/add}" th:object="${user}" >
+ 
       <table>
             <tr>
                 <td>姓名:</td>
-                <td><input type="text" th:field="*{name}" />
-              
+                <td><input type="text" id="name" th:field="*{name}" />
                 </td>
                 </tr>
-
             <tr>
                 <td>性別:</td>
-                <td><input type="radio"  value="男" th:field="*{sex}" />
+                <td><input type="radio"  value="男"  name="sex",th:field="*{sex}" />
                 男
-                <input type="radio"  value="女" th:field="*{sex}" />
+                <input type="radio"  value="女"  name="sex",th:field="*{sex}" />
                 女              </td>
                 </tr>
-            
                 <tr>
                 <td>電話:</td>
-                <td><input type="text" max="10" th:field="*{phone}" />
-                
+                <td><input type="text" max="10" id="phone" th:field="*{phone}" />            
                 </td>
-                </tr>
-            
+                </tr>        
                 <tr>
                 <td>地區:</td> 
                 <td><select id="area" th:field="*{area}" />
@@ -62,16 +57,16 @@
                 </td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td >
                         <input type="submit" value="確定提交" />
-                        
                         </td>
-                    <td colspan="2">
+                    <td>
                     　<input type="reset" value="清除">
                 </td>
                 </tr>
-        
         </table>
     </form> 
+    
+
 </body>
 </html>
