@@ -21,7 +21,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.Mapper.UserMapper;
 import com.example.demo.model.User;
 import net.sf.json.JSONObject;
 import org.postgresql.util.PGobject;
